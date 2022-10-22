@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKB CRM-system</title>
+    </title>
+    <link type="Image/x-icon" href="./img/logo.svg" rel="icon">
+    <link rel="stylesheet" href="./style/normalize.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="./scripts/crm-frontend/main.js" type="module"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container flex">
+            <a href="#" class="header__logo">
+                <img src="./img/logo.svg" alt="Логотип">
+            </a>
+            <input class="header__input" type="text" placeholder="Введите запрос">
+        </div>
+    </header>
+    <section class="work-section">
+        <div class="work-section__container container">
+            <h1 class="work-section__title">Клиенты</h1>
+            <button class="work-section__btn btn-prime flex">
+                <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.5 8C16.71 8 18.5 6.21 18.5 4C18.5 1.79 16.71 0 14.5 0C12.29 0 10.5 1.79 10.5 4C10.5 6.21 12.29 8 14.5 8ZM5.5 6V3H3.5V6H0.5V8H3.5V11H5.5V8H8.5V6H5.5ZM14.5 10C11.83 10 6.5 11.34 6.5 14V16H22.5V14C22.5 11.34 17.17 10 14.5 10Z" fill="#9873FF"/>
+                    </svg>
+                <span>
+                    Добавить клиента
+                </span>
+            </button>
+        </div>
+
+        <div class="spinner spinner-head" style="display: none;"></div>
+    </section>
+    <div class = "internet-disconnect">Разорвано интернет соединение</div>
+</body>
+
+</html>
