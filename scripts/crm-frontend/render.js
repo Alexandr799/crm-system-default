@@ -1,3 +1,19 @@
+function initToolBar(elem){
+    const tool = document.createElement('div')
+    tool.classList.add('toolbar')
+
+    const type = document.createElement('span')
+    type.textContent = elem.getAttribute(`data-type`) + ':'
+    type.style = `margin-right:3px`
+
+    const val = document.createElement('span')
+    const href = elem.getAttribute('href')
+    val.textContent = href.includes(`:`) ? href.split(`:`)[1]:href
+    tool.append(type)
+    tool.append(val)
+    elem.append(tool)
+}
+
 function parseContacts(list, elem){
     const contactsList = {
         tel:`<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,37 +39,27 @@ function parseContacts(list, elem){
     contactsFlex.classList.add('contactsFlex')
     contactsFlex.classList.add('contacts-wrapper')
     for (let i of list){
+        let a = document.createElement('a')
+        a.classList.add('contacts-link')
         if (i.type.toLowerCase() === 'телефон'){
-            let a = document.createElement('a')
-            a.classList.add('contacts-link')
             a.href = `tel:${i.value}`
             a.innerHTML = contactsList.tel
-            contactsFlex.append(a)
         } else if (i.type.toLowerCase() === 'email'){
-            let a = document.createElement('a')
             a.href = `mailto:${i.value}`
-            a.classList.add('contacts-link')
             a.innerHTML = contactsList.mail
-            contactsFlex.append(a)
         } else if (i.type.toLowerCase() === 'vk'){
-            let a = document.createElement('a')
-            a.classList.add('contacts-link')
             a.href = `${i.value}`
             a.innerHTML = contactsList.vk
-            contactsFlex.append(a)
         } else if (i.type.toLowerCase() === 'facebook'){
-            let a = document.createElement('a')
-            a.classList.add('contacts-link')
             a.href = `${i.value}`
             a.innerHTML = contactsList.fb
-            contactsFlex.append(a)
         } else {
-            let a = document.createElement('a')
-            a.classList.add('contacts-link')
             a.href = `${i.value}`
             a.innerHTML = contactsList.another
-            contactsFlex.append(a)
         }
+        a.setAttribute(`data-type`, i.type)
+        contactsFlex.append(a)
+        initToolBar(a)
     }
     if(contactsFlex.children.length>4){
         for (let i = 4; i<contactsFlex.children.length; i++){
@@ -353,6 +359,10 @@ export function renderBodyTable(list, tbody, sortFunction){
         tr.append(thContacts)
         tr.append(thActions)
         tbody.append(tr)
+        for (let i of tbody.querySelectorAll(`.toolbar`)){
+            const left = ((i.offsetWidth-16) / 2) * -1
+            i.setAttribute('style', `left:${left}px;`)
+        }
     }
 }
 
