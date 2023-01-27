@@ -70,7 +70,7 @@ describe('Clients API', () => {
   });
 
   it('POST /api/clients should return error descriptions with 422 status on validation error', async () => {
-    const res = await axios.post('', { name: 'Srsly? Only name?'});
+    const res = await axios.post('', { name: 'Srsly? Only name?' });
     expect(res.status).toBe(422);
     expect(Array.isArray(res.data.errors)).toBe(true);
     expect(res.data.errors.length).toBeGreaterThan(0);

@@ -1,7 +1,7 @@
 @font-face {
     font-family: "OpenSans";
-    src: url('../fonts/OpenSans-Regular.woff2') format('woff2'),
-    url('../fonts/OpenSans-Regular.woff') format('woff');
+    src: url('../assets/fonts/OpenSans-Regular.woff2') format('woff2'),
+    url('../assets/fonts/OpenSans-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -9,8 +9,8 @@
 
 @font-face {
     font-family: "OpenSans";
-    src: url('../fonts/OpenSans-Bold.woff2') format('woff2'),
-    url('../fonts/OpenSans-Bold.woff') format('woff');
+    src: url('../assets/fonts/OpenSans-Bold.woff2') format('woff2'),
+    url('../assets/fonts/OpenSans-Bold.woff') format('woff');
     font-weight: 700;
     font-style: bold;
     font-display: swap;
@@ -87,6 +87,10 @@ img {
 .header {
     background-color: #FFFFFF;;
     box-shadow: 0px 9.03012px 27.0904px rgba(176, 190, 197, 0.32), 0px 3.38629px 5.64383px rgba(176, 190, 197, 0.32);
+}
+
+.header__logo {
+  width: 45px;
 }
 
 .header__container {
@@ -174,11 +178,13 @@ img {
 }
 
 .add-client-form {
+    overflow: hidden;
     position: relative;
     margin: 0 auto;
     flex-direction: column;
     width: 450px;
     padding: 24px 30px 180px 30px;
+    padding-top: 24px;
     background-color: #FFFFFF;
 }
 
