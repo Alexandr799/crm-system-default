@@ -1,3 +1,5 @@
+import URI from './env'
+
 function includesRusSymbols(str) {
   const rus = 'абвгдежзийклмнопрстуфхцчшщъыьэю'
   let answer = false
@@ -41,7 +43,7 @@ function telNormalize(tel) {
 }
 
 export function getServerClient() {
-  const res = fetch('http://localhost:3000/api/clients')
+  const res = fetch(`${URI}/api/clients`)
     .then(data => {
       if (data.status < 200 || data.status > 201) {
         const err = new Error('C сервера пришла ошибка')
@@ -57,7 +59,7 @@ export function getServerClient() {
 }
 
 export function getClientById(id) {
-  const res = fetch(`http://localhost:3000/api/clients/${id}`)
+  const res = fetch(`${URI}/api/clients/${id}`)
     .then(data => {
       if (data.status < 200 || data.status > 201) {
         const err = new Error('C сервера пришла ошибка')
@@ -170,7 +172,7 @@ export function validateValue(client, deleteInputValue = true) {
 
 export async function deleteClientInServer(id) {
   try {
-    const res = await fetch(`http://localhost:3000/api/clients/${id}`, {
+    const res = await fetch(`${URI}/api/clients/${id}`, {
       method: 'DELETE'
     })
     if (res.status === 500) {
@@ -183,7 +185,7 @@ export async function deleteClientInServer(id) {
 }
 
 export async function pushNewClientInServer(client, id) {
-  const res = await fetch('http://localhost:3000/api/clients', {
+  const res = await fetch(`${URI}/api/clients`, {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(client)
@@ -197,7 +199,7 @@ export async function pushNewClientInServer(client, id) {
 }
 
 export async function patchClient(client, id) {
-  const res = await fetch(`http://localhost:3000/api/clients/${id}`, {
+  const res = await fetch(`${URI}/api/clients/${id}`, {
     method: 'PATCH',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(client)
@@ -211,7 +213,7 @@ export async function patchClient(client, id) {
 }
 
 export async function serchClient(str) {
-  const res = await fetch(`http://localhost:3000/api/clients?search=${str}`)
+  const res = await fetch(`${URI}/api/clients?search=${str}`)
     .then(data => {
       if (data.status < 200 || data.status > 201) {
         const err = new Error('C сервера пришла ошибка')
